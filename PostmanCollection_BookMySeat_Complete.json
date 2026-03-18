@@ -1,0 +1,453 @@
+{
+  "info": {
+    "name": "BookMySeat API",
+    "description": "Comprehensive API collection for BookMySeat ticket booking application",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "version": "1.0.0"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Application Health",
+      "description": "Application status and health check endpoints",
+      "item": [
+        {
+          "name": "Welcome",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/",
+              "host": ["{{base_url}}"],
+              "path": [""]
+            },
+            "description": "Get application welcome message and version"
+          },
+          "response": []
+        },
+        {
+          "name": "Health Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/health",
+              "host": ["{{base_url}}"],
+              "path": ["health"]
+            },
+            "description": "Check application health and service status"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "User Management",
+      "description": "User account creation and management",
+      "item": [
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"customer@example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/users",
+              "host": ["{{base_url}}"],
+              "path": ["api", "users"]
+            },
+            "description": "Create a new user account for ticket booking"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "City Management",
+      "description": "City creation and management for theatre operations",
+      "item": [
+        {
+          "name": "Create City",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Mumbai\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/cities",
+              "host": ["{{base_url}}"],
+              "path": ["api", "cities"]
+            },
+            "description": "Create a new city for theatre operations"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Theatre Management ✅ FIXED",
+      "description": "Theatre, auditorium and seat management endpoints - NOW FULLY FUNCTIONAL",
+      "item": [
+        {
+          "name": "Create Theatre",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"PVR Cinemas\",\n  \"address\": \"Fort, Mumbai\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/theatres/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "theatres", "1"]
+            },
+            "description": "Create a new theatre in a city - FIXED ✅"
+          },
+          "response": []
+        },
+        {
+          "name": "Add Auditorium",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Screen 1\",\n  \"capacity\": 150\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/theatres/1/auditoriums",
+              "host": ["{{base_url}}"],
+              "path": ["api", "theatres", "1", "auditoriums"]
+            },
+            "description": "Add auditorium to theatre - FIXED ✅"
+          },
+          "response": []
+        },
+        {
+          "name": "Add Seats to Auditorium",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"VIP\": 20,\n  \"PLATINUM\": 30,\n  \"GOLD\": 50,\n  \"SILVER\": 50\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/theatres/1/seats",
+              "host": ["{{base_url}}"],
+              "path": ["api", "theatres", "1", "seats"]
+            },
+            "description": "Add seats to auditorium - FIXED ✅"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Show Management",
+      "description": "Movie show creation and scheduling",
+      "item": [
+        {
+          "name": "Create Show",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"movieId\": 1,\n  \"startTime\": \"2026-03-20T18:30:00\",\n  \"endTime\": \"2026-03-20T21:30:00\",\n  \"auditoriumId\": 1,\n  \"seatPrices\": {\n    \"VIP\": 300,\n    \"PLATINUM\": 250,\n    \"GOLD\": 200,\n    \"SILVER\": 150\n  },\n  \"language\": \"HINDI\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/shows",
+              "host": ["{{base_url}}"],
+              "path": ["api", "shows"]
+            },
+            "description": "Create a new movie show with seat pricing"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Ticket Booking",
+      "description": "Ticket booking and reservation management",
+      "item": [
+        {
+          "name": "Book Ticket",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"showId\": 1,\n  \"showSeatIds\": [1, 2, 3],\n  \"userId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/tickets",
+              "host": ["{{base_url}}"],
+              "path": ["api", "tickets"]
+            },
+            "description": "Book a ticket for a show with selected seats"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Complete Workflow Example",
+      "description": "Step-by-step example of the complete booking workflow",
+      "item": [
+        {
+          "name": "Step 1 - Create User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"john.doe@example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/users",
+              "host": ["{{base_url}}"],
+              "path": ["api", "users"]
+            },
+            "description": "Step 1: Create a new user account\nExpected Response: User ID (use in Step 8)"
+          },
+          "response": []
+        },
+        {
+          "name": "Step 2 - Create City",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Mumbai\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/cities",
+              "host": ["{{base_url}}"],
+              "path": ["api", "cities"]
+            },
+            "description": "Step 2: Create a city\nExpected Response: City ID = 1 (use in Step 3)"
+          },
+          "response": []
+        },
+        {
+          "name": "Step 3 - Create Theatre",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"PVR Cinemas\",\n  \"address\": \"Fort, Mumbai\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/theatres/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "theatres", "1"]
+            },
+            "description": "Step 3: Create a theatre in the city\nExpected Response: Theatre ID = 1 (use in Step 4)"
+          },
+          "response": []
+        },
+        {
+          "name": "Step 4 - Add Auditorium",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Screen 1\",\n  \"capacity\": 150\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/theatres/1/auditoriums",
+              "host": ["{{base_url}}"],
+              "path": ["api", "theatres", "1", "auditoriums"]
+            },
+            "description": "Step 4: Add auditorium (screen) to theatre\nExpected Response: Auditorium ID = 1 (use in Step 5)"
+          },
+          "response": []
+        },
+        {
+          "name": "Step 5 - Add Seats",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"VIP\": 20,\n  \"PLATINUM\": 30,\n  \"GOLD\": 50,\n  \"SILVER\": 50\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/theatres/1/seats",
+              "host": ["{{base_url}}"],
+              "path": ["api", "theatres", "1", "seats"]
+            },
+            "description": "Step 5: Add seats to auditorium\nExpected Response: Seat IDs 1-150 (use in Step 8)"
+          },
+          "response": []
+        },
+        {
+          "name": "Step 6 - Create Movie (DB Only)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "NOTE: Movie creation not exposed via REST API.\nAdd movie to database directly:\n\nINSERT INTO movie (name, length, rating) \nVALUES ('Inception', 148, 8.8);\n\nRetrieve Movie ID = 1 (use in Step 7)"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/movies",
+              "host": ["{{base_url}}"],
+              "path": ["api", "movies"]
+            },
+            "description": "Step 6: Movies must be created via database (not REST API)\nDatabase: INSERT Movie with ID = 1"
+          },
+          "response": []
+        },
+        {
+          "name": "Step 7 - Create Show",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"movieId\": 1,\n  \"startTime\": \"2026-03-20T18:30:00\",\n  \"endTime\": \"2026-03-20T21:30:00\",\n  \"auditoriumId\": 1,\n  \"seatPrices\": {\n    \"VIP\": 300,\n    \"PLATINUM\": 250,\n    \"GOLD\": 200,\n    \"SILVER\": 150\n  },\n  \"language\": \"HINDI\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/shows",
+              "host": ["{{base_url}}"],
+              "path": ["api", "shows"]
+            },
+            "description": "Step 7: Create a show with pricing for each seat type\nExpected Response: Show ID = 1 (use in Step 8)"
+          },
+          "response": []
+        },
+        {
+          "name": "Step 8 - Book Ticket",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"showId\": 1,\n  \"showSeatIds\": [1, 2, 3],\n  \"userId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/tickets",
+              "host": ["{{base_url}}"],
+              "path": ["api", "tickets"]
+            },
+            "description": "Step 8: Book ticket for the show with selected seats\nExpected Response: Ticket ID, total amount, confirmation status"
+          },
+          "response": []
+        },
+        {
+          "name": "Complete Workflow - Expected Result",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/health",
+              "host": ["{{base_url}}"],
+              "path": ["health"]
+            },
+            "description": "After completing all 8 steps:\n\n✅ User created (john.doe@example.com)\n✅ City created (Mumbai)\n✅ Theatre created (PVR Cinemas in Mumbai)\n✅ Auditorium added (Screen 1 with 150 capacity)\n✅ Seats added (20 VIP, 30 PLATINUM, 50 GOLD, 50 SILVER)\n✅ Show created (Movie: Inception, Time: 2026-03-20 18:30)\n✅ Ticket booked (User ID 1, Seats 1-3)\n\nTotal Booking Flow Complete!"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
