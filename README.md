@@ -98,15 +98,6 @@ User B receives: HTTP 409 Conflict with ShowSeatNotAvailableException message
 2. **Concurrent booking requests** - Limited by database connection pool and write throughput
 3. **No caching** - Every API request hits the database
 
-### Performance Improvements (Recommended for Production)
-
-1. **Optimistic Locking** - Add `@Version` field to `ShowSeat` to reduce lock contention
-2. **Redis Caching** - Cache seat availability (with TTL-based invalidation) to reduce DB hits
-3. **Async Notifications** - Use message queues (RabbitMQ/Kafka) for payment processing and confirmation emails
-4. **Read Replicas** - Separate read-only queries for availability checks from write operations
-5. **Materialized Views** - Pre-compute show availability statistics to avoid repeated aggregation queries
-6. **Connection Pool Tuning** - Increase HikariCP pool size for high-traffic shows (Black Friday sales, etc.)
-
 ## Trade-offs & Design Decisions
 
 ### Why Spring Boot Monolith (Not Microservices)?
